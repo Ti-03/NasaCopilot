@@ -15,6 +15,8 @@ import time
 from gtts import gTTS
 import base64
 import speech_recognition as sr
+import pyaudio
+import pywhatkit
 import time
 
 language = "en"
@@ -130,7 +132,7 @@ def main():
     st.set_page_config(page_title='Sahel', page_icon=':robot_face:')
     st.write(css, unsafe_allow_html=True)
 
-    st.header('Sahil Copilot :sparkles:')
+    st.header('Sahel Copilot :rocket:')
     def bind_socket():
 
         pdf_file_paths = [
