@@ -10,3 +10,4 @@ streamlit_tags==1.2.8
 openai
 tiktoken
 faiss-cpu
+chromadb
