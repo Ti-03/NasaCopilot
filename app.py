@@ -203,13 +203,13 @@ def main():
     Prompt =""
 
     #Prompt ="You are Standards Technical Assistance Resource AI named 'Sahel' and you are a copilot. and your task is to help answer all the questions based on the guides I gave to you on this form :' Section: section number.Issue: issue description   , and My question is  "
-    if st.button("Microphone :microphone:"):
-            with st.spinner("Speak up"):
-                text= get_audio()
-                if text != "":
-                        handle_userinput(text,text)
-                else:
-                        st.write(bot_template.replace("{{MSG}}","Sorry can you repeat that again ? ! "), unsafe_allow_html=True)
+    #if st.button("Microphone :microphone:"):
+         #   with st.spinner("Speak up"):
+        #        text= get_audio()
+       #         if text != "":
+      #                  handle_userinput(text,text)
+     #           else:
+    #                    st.write(bot_template.replace("{{MSG}}","Sorry can you repeat that again ? ! "), unsafe_allow_html=True)
     if st.button("Send :arrow_forward:"):
             with st.spinner("Processing..."):
                 if st.session_state.conversation is None:
