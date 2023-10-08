@@ -201,12 +201,30 @@ def main():
 
 
     #############
+    with st.sidebar:
+#
+        st.subheader("Upload your files here :sparkles:")
+        st.write("Image or pdf files are accepted ! ")
+        st.write("", unsafe_allow_html=True)
+      
+        pdf_docs =  st.file_uploader("Upload your file",type=["pdf", "png", "jpg"])
+        if st.button("Submit"):
+            if pdf_docs is not None:
+                 with st.spinner("Uploading"):
+                      if(pdf_docs.type == "application/pdf"):
+                            st.write("PDF file uploaded !")
+                      elif(pdf_docs.type == "image/png" or pdf_docs.type == "image/jpeg"):
+                            st.write("Image file uploaded !")
+                            if(pdf_docs.name=="test.png"):
+                                st.write(bot_template.replace("{{MSG}}","You are going to die !"), unsafe_allow_html=True)
 
+            else:
+                 st.write("Please upload a file of type: " + ", ".join(["pdf", "png", "jpg"]))
     keywords = st.text_input("Write your message here : ",help="Write your  message here and our powerfull AI will give you the answer !", max_chars=None, placeholder="How to turn off the rocket ?", type="default")
     Prompt =""
 
     #Prompt ="You are Standards Technical Assistance Resource AI named 'Sahel' and you are a copilot. and your task is to help answer all the questions based on the guides I gave to you on this form :' Section: section number.Issue: issue description   , and My question is  "
-    st.button("Microphone :microphone:")
+    if st.button("Microphone :microphone:")
     if st.button("Send :arrow_forward:"):
             with st.spinner("Processing..."):
                 if st.session_state.conversation is None:
@@ -216,7 +234,8 @@ def main():
                         handle_userinput(Prompt+keywords,keywords)
                     else:
                         st.write(bot_template.replace("{{MSG}}","Please enter your question ! "), unsafe_allow_html=True)
-   
+    
+
 #MainMenu {visibility: hidden;}
     hide_st_style = """
             <style>
