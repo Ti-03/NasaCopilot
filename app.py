@@ -42,8 +42,11 @@ def get_audio():
     recorder = sr.Recognizer()
     with sr.Microphone() as mic:
         print("You can start talking now")
+        st.write("lestening... (you can start talking now)")     
+
         audio = recorder.listen(mic)
-        print("Time is over")     
+        print("Time is over")
+        st.write("Recognizing...")     
     try:
         text = recorder.recognize_google(audio)
     except:
@@ -202,14 +205,8 @@ def main():
     keywords = st.text_input("Write your message here : ",help="Write your  message here and our powerfull AI will give you the answer !", max_chars=None, placeholder="How to turn off the rocket ?", type="default")
     Prompt =""
 
-    #Prompt ="You are Standards Technical Assistance Resource AI named 'Sahel' and you are a copilot. and your task is to help answer all the questions based on the guides I gave to you on this form :' Section: section number.Issue: issue description   , and My question is  "
-    #if st.button("Microphone :microphone:"):
-         #   with st.spinner("Speak up"):
-        #        text= get_audio()
-       #         if text != "":
-      #                  handle_userinput(text,text)
-     #           else:
-    #                    st.write(bot_template.replace("{{MSG}}","Sorry can you repeat that again ? ! "), unsafe_allow_html=True)
+    Prompt ="You are Standards Technical Assistance Resource AI named 'Sahel' and you are a copilot. and your task is to help answer all the questions based on the guides I gave to you on this form :' Section: section number.Issue: issue description   , and My question is  "
+    st.button("Microphone :microphone:"):
     if st.button("Send :arrow_forward:"):
             with st.spinner("Processing..."):
                 if st.session_state.conversation is None:
