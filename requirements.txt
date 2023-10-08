@@ -9,3 +9,4 @@ streamlit==1.23.1
 streamlit_tags==1.2.8
 openai
 tiktoken
+faiss-cpu
