@@ -215,7 +215,6 @@ def main():
                    st.write(bot_template.replace("{{MSG}}","Error in our systems, Please try again later.."), unsafe_allow_html=True)
                 else:
                     if len(keywords) > 0:
-                        keywords.value = ""
                         handle_userinput(Prompt+keywords,keywords)
                     else:
                         st.write(bot_template.replace("{{MSG}}","Please enter your question ! "), unsafe_allow_html=True)
