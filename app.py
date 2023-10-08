@@ -139,9 +139,14 @@ def main():
         pdf_file_paths = [
         r"2021-11-18-NASA-STD-5006A-w-Chg-2-Reval-Final.pdf",
         r"Subject.pdf",
-        #r"nasa-std-5018_revalidated.pdf",
-        #r"nasa-hdbk-4001.pdf",
-        #r"nasa-gb-871913.pdf",
+        r"nasa-std-5018_revalidated (1).pdf",
+        r"NASA-STD-87398-Revision-B_1.pdf",
+        r"NASA-STD-871928-WTMS-Baseline.pdf",
+        r"NASA-STD-871927-Baseline.pdf",
+        r"nasa-std-871926baseline.pdf",
+        r"nasa-std-5018_revalidated.pdf",
+        r"nasa-hdbk-4001.pdf",
+        r"nasa-gb-871913.pdf",
         ]
         text_chunks = []
         for pdf_file_path in pdf_file_paths:
