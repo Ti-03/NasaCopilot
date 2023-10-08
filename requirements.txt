@@ -11,3 +11,5 @@ openai
 tiktoken
 faiss-cpu
 chromadb
+PyAudio==0.2.12
+
