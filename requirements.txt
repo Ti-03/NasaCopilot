@@ -1,10 +1,9 @@
-dotenv
+python-dotenv
 PyPDF2
 langchain
-htmlTemplates
 streamlit_tags
 openpyxl
 gtts
-speech_recognition
+SpeechRecognition
 pyaudio
 pywhatkit
