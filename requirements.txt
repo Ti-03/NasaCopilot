@@ -1,0 +1,11 @@
+gTTS==2.4.0
+langchain==0.0.310
+openpyxl==3.1.2
+PyAudio==0.2.13
+pyht==0.0.13
+PyPDF2==3.0.1
+python-dotenv==1.0.0
+pywhatkit==5.4
+SpeechRecognition==3.10.0
+streamlit==1.23.1
+streamlit_tags==1.2.8
