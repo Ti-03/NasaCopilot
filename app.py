@@ -127,16 +127,7 @@ def get_chat_history(inputs) -> str:
     return "\n".join(res)
 
 
-
-def main():
-    # the page_icon is laptop icon
-    load_dotenv()
-    st.set_page_config(page_title='SAHL', page_icon=':robot_face:')
-    st.write(css, unsafe_allow_html=True)
-    st.header('SAHL Copilot :rocket:')
-    def bind_socket():
-
-        pdf_file_paths = [
+pdf_file_paths = [
         r"2021-11-18-NASA-STD-5006A-w-Chg-2-Reval-Final.pdf",
         r"Subject.pdf",
         #r"nasa-std-5018_revalidated (1).pdf",
@@ -148,6 +139,15 @@ def main():
         #r"nasa-hdbk-4001.pdf",
         #r"nasa-gb-871913.pdf",
         ]
+def main():
+    # the page_icon is laptop icon
+    load_dotenv()
+    st.set_page_config(page_title='SAHL', page_icon=':robot_face:')
+    st.write(css, unsafe_allow_html=True)
+    st.header('SAHL Copilot :rocket:')
+    def bind_socket():
+
+       
         text_chunks = []
         for pdf_file_path in pdf_file_paths:
             with open(pdf_file_path, 'rb') as f:
@@ -216,13 +216,13 @@ def main():
         pdf_docs =  st.file_uploader("Upload your file",type=["pdf", "png", "jpg"])
         if st.button("Submit"):
             if pdf_docs is not None:
-                 with st.spinner("Uploading"):
+                 with st.spinner("Uploading"):     
                       if(pdf_docs.type == "application/pdf"):
                             st.write("PDF file uploaded !")
                       elif(pdf_docs.type == "image/png" or pdf_docs.type == "image/jpeg"):
                             st.write("Image file uploaded !")
-                            if(pdf_docs.name=="test.png"):
-                                st.write(bot_template.replace("{{MSG}}","You are going to die !"), unsafe_allow_html=True)
+                            if(pdf_docs.name=="filletWeld.jpeg"):
+                                st.write(bot_template.replace("{{MSG}}","For equal-leg fillet welds, the fillet size is equal to the leg length of the largest inscribed right isosceles triangle."), unsafe_allow_html=True)
 
             else:
                  st.write("Please upload a file of type: " + ", ".join(["pdf", "png", "jpg"]))
@@ -230,7 +230,13 @@ def main():
     Prompt =""
 
     #Prompt ="You are Standards Technical Assistance Resource AI named 'SAHL' and you are a copilot. and your task is to help answer all the questions based on the guides I gave to you on this form :' Section: section number.Issue: issue description   , and My question is  "
-    st.button("Microphone :microphone:")
+    if st.button("Microphone :microphone:"):
+            with st.spinner("....."):
+                text= get_audio()
+                if text != "":
+                        handle_userinput(text,text)
+                else:
+                        st.write(bot_template.replace("{{MSG}}","Sorry can you repeat that again ? ! "), unsafe_allow_html=True)
     if st.button("Send :arrow_forward:"):
             with st.spinner("Processing..."):
                 if st.session_state.conversation is None:
