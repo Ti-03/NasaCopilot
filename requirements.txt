@@ -2,7 +2,7 @@ gTTS==2.4.0
 langchain
 openpyxl==3.1.2
 PyAudio==0.2.13
-pyht==0.0.13
+pyht
 PyPDF2==3.0.1
 python-dotenv==1.0.0
 pywhatkit==5.4
