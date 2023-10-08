@@ -16,7 +16,6 @@ from gtts import gTTS
 import base64
 import speech_recognition as sr
 import pyaudio
-import pywhatkit
 import time
 
 language = "en"
