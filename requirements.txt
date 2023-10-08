@@ -5,5 +5,4 @@ streamlit_tags
 openpyxl
 gtts
 SpeechRecognition
-pyaudio
-pywhatkit
+
