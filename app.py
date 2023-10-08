@@ -205,7 +205,7 @@ def main():
     keywords = st.text_input("Write your message here : ",help="Write your  message here and our powerfull AI will give you the answer !", max_chars=None, placeholder="How to turn off the rocket ?", type="default")
     Prompt =""
 
-    Prompt ="You are Standards Technical Assistance Resource AI named 'Sahel' and you are a copilot. and your task is to help answer all the questions based on the guides I gave to you on this form :' Section: section number.Issue: issue description   , and My question is  "
+    #Prompt ="You are Standards Technical Assistance Resource AI named 'Sahel' and you are a copilot. and your task is to help answer all the questions based on the guides I gave to you on this form :' Section: section number.Issue: issue description   , and My question is  "
     st.button("Microphone :microphone:")
     if st.button("Send :arrow_forward:"):
             with st.spinner("Processing..."):
