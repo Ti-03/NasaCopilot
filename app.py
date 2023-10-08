@@ -259,7 +259,7 @@ def main():
             </style>
             """
     
-    st.write("<a href='https://twitter.com/Qutibah_' id='my-link' >Made with ❤️ by Kepler's Crew</a>", unsafe_allow_html=True)
+    st.write("<a href='https://www.spaceappschallenge.org/2023/find-a-team/keplers-crew/' id='my-link' >Made with ❤️ by Kepler's Crew</a>", unsafe_allow_html=True)
     st.markdown(hide_st_style, unsafe_allow_html=True) 
     #with st.sidebar:
 ##
