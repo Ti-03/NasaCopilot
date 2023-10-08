@@ -13,8 +13,8 @@ css = '''
   width: 20%;
 }
 .chat-message .avatar img {
-  max-width: 38px;
-  max-height: 38px;
+  max-width: 58px;
+  max-height: 58px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -28,7 +28,7 @@ css = '''
 bot_template = '''
 <div class="chat-message bot">
     <div class="avatar">
-        <img src="https://i.ibb.co/GcnFKpQ/JUSTAI-robot.pngs">
+        <img src="https://i.imgur.com/3FRB27N.jpg">
     </div>
     <div class="message" style="font-size:1em">{{MSG}}</div>
 </div>
@@ -37,7 +37,7 @@ bot_template = '''
 user_template = '''
 <div class="chat-message user">
     <div class="avatar">
-        <img src="https://i.ibb.co/rdZC7LZ/Photo-logo-1.png">
+        <img src="https://i.imgur.com/MlhgtPE.jpg">
     </div>    
     <div class="message">{{MSG}}</div>
 </div>

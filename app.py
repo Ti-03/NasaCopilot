@@ -41,12 +41,13 @@ def get_audio():
     text = ""
     recorder = sr.Recognizer()
     with sr.Microphone() as mic:
-        print("You can start talking now")
-        st.write("lestening... (you can start talking now)")     
-
+        recorder.adjust_for_ambient_noise(mic, duration=0.9)
         audio = recorder.listen(mic)
+
+        print("You can start talking now")
+        textt = st.write("listening... (you can start talking now)")
         print("Time is over")
-        st.write("Recognizing...")     
+        textt = st.write("Processing your speech")     
     try:
         text = recorder.recognize_google(audio)
     except:
@@ -88,9 +89,8 @@ def get_vectorsstore(text_chunks):
 
     #return response[0][0]
 def get_conversation_chain(vectorsstore):
-    # model_name='gpt-3.5-turbo', temperature=0.5, top_p=0.5, frequency_penalty=0, presence_penalty=0.4
-    llm = ChatOpenAI(model_name='gpt-3.5-turbo')
-    memory = ConversationBufferMemory(memory_key='chat_history',return_messages=True,ai_prefix='Sahel')
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.5, top_p=0.5, frequency_penalty=1, presence_penalty=0.4)
+    memory = ConversationBufferMemory(memory_key='chat_history',return_messages=True,ai_prefix='SAHL')
     conversation_chain=ConversationalRetrievalChain.from_llm(
         llm=llm,
         retriever=vectorsstore.as_retriever(),
@@ -131,15 +131,16 @@ def get_chat_history(inputs) -> str:
 def main():
     # the page_icon is laptop icon
     load_dotenv()
-    st.set_page_config(page_title='Sahel', page_icon=':robot_face:')
+    st.set_page_config(page_title='SAHL', page_icon=':robot_face:')
     st.write(css, unsafe_allow_html=True)
-
-    st.header('Sahel Copilot :rocket:')
+    st.header('SAHL Copilot :rocket:')
     def bind_socket():
 
         pdf_file_paths = [
-        r"nasa-std-5018_revalidated.pdf",
-        r"nasa-hdbk-4001.pdf",
+        r"2021-11-18-NASA-STD-5006A-w-Chg-2-Reval-Final.pdf",
+        r"Subject.pdf",
+        #r"nasa-std-5018_revalidated.pdf",
+        #r"nasa-hdbk-4001.pdf",
         #r"nasa-gb-871913.pdf",
         ]
         text_chunks = []
@@ -220,11 +221,17 @@ def main():
 
             else:
                  st.write("Please upload a file of type: " + ", ".join(["pdf", "png", "jpg"]))
-    keywords = st.text_input("Write your message here : ",help="Write your  message here and our powerfull AI will give you the answer !", max_chars=None, placeholder="How to turn off the rocket ?", type="default")
+    keywords = st.text_input("Write your message here : ",help="Write your  message here and our powerfull AI will give you the answer !", max_chars=None, placeholder="How does heat effects welding ?", type="default")
     Prompt =""
 
-    #Prompt ="You are Standards Technical Assistance Resource AI named 'Sahel' and you are a copilot. and your task is to help answer all the questions based on the guides I gave to you on this form :' Section: section number.Issue: issue description   , and My question is  "
-    st.button("Microphone :microphone:")
+    #Prompt ="You are Standards Technical Assistance Resource AI named 'SAHL' and you are a copilot. and your task is to help answer all the questions based on the guides I gave to you on this form :' Section: section number.Issue: issue description   , and My question is  "
+    if st.button("Microphone :microphone:"):
+            with st.spinner("....."):
+                text= get_audio()
+                if text != "":
+                        handle_userinput(text,text)
+                else:
+                        st.write(bot_template.replace("{{MSG}}","Sorry can you repeat that again ? ! "), unsafe_allow_html=True)
     if st.button("Send :arrow_forward:"):
             with st.spinner("Processing..."):
                 if st.session_state.conversation is None:
@@ -239,8 +246,7 @@ def main():
 #MainMenu {visibility: hidden;}
     hide_st_style = """
             <style>
-           
-            
+        
             footer {visibility: hidden;}
            
             #my-link{
@@ -266,8 +272,6 @@ def main():
     #    if st.button("Submit"):
     #        #with st.spinner("Loading..."):
     #       
-
-
 
 if __name__ == '__main__':
     main()
